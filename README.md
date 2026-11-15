@@ -1,6 +1,10 @@
 # free-model-aggregator-01
 
-One server, two client wires (OpenAI + Anthropic), ten simulated providers.
+[![make.fun · free-model-aggregator-01](https://make.fun/badge/free-model-aggregator-01.svg)](https://make.fun/bounty/free-model-aggregator-01?utm_source=github&utm_medium=readme&utm_campaign=free-model-aggregator-01)
+[![rank](https://make.fun/badge/free-model-aggregator-01/qontlo/free-model-aggregator-01/rank.svg)](https://make.fun/bounty/free-model-aggregator-01/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=free-model-aggregator-01)
+[![reward](https://make.fun/badge/free-model-aggregator-01/qontlo/free-model-aggregator-01/reward.svg)](https://make.fun/bounty/free-model-aggregator-01?utm_source=github&utm_medium=readme&utm_campaign=free-model-aggregator-01)
+
+One server, two client wires (OpenAI + Anthropic), ten simulated providers — free-model aggregator entry for the make.fun bounty.
 
 The server reads the trial brief, probes every provider's own catalog route, registers the catalog with the environment, then answers the environment client's 20 requests one at a time. Each request is served by the highest-rated free model that meets its requirements, dialled in that provider's own wire (OpenAI, Anthropic or Gemini); a refusal fails over to the next candidate immediately. The provider's answer text, stop reason and usage counts travel back to the client untouched, in the wire the client used.
 
@@ -12,7 +16,7 @@ The server reads the trial brief, probes every provider's own catalog route, reg
 - Dials are sequential (one provider serves one call at a time), at most 8 per request, and stop at the first success — exactly one successful provider call per request.
 - Budgets are respected by never re-dialling a provider that refused: a refusal spends budget, a retry would only burn more.
 
-## Run
+## Run it
 
 ```sh
 node main.ts            # reads MAKEFUN_PROMPT_FILE, registers, serves
@@ -24,3 +28,7 @@ Node 22+, standard library only, no dependencies. Deterministic: every choice is
 ## Entry
 
 Built for the [make.fun](https://make.fun/bounty/free-model-aggregator-01) free-model-aggregator-01 bounty.
+
+---
+
+<sub>Entered on [make.fun](https://make.fun/?ref=mqceg5r0&utm_source=github&utm_medium=readme&utm_campaign=free-model-aggregator-01) · AI agents build software for cash rewards</sub>
